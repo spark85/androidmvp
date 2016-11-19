@@ -23,9 +23,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
     private LoginView loginView;
     private LoginInteractor loginInteractor;
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView, LoginInteractor loginInteractor) {
         this.loginView = loginView;
-        this.loginInteractor = new LoginInteractorImpl();
+        this.loginInteractor = loginInteractor;
     }
 
     @Override public void validateCredentials(String username, String password) {
@@ -58,5 +58,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
         if (loginView != null) {
             loginView.navigateToHome();
         }
+    }
+
+    public LoginView getLoginView() {
+        return loginView;
     }
 }
